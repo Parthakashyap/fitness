@@ -11,6 +11,8 @@ html{
   }
 
 body {
+    background: #003220;
+    min-height: 100vh;
     margin: auto;
 }
 
@@ -21,7 +23,9 @@ li {
 a {
     text-decoration: none;
 }
-
+.banner-video{
+    margin-top: 6.2rem;
+}
 /* Top Navbar Styles */
 
 .nav-top{
@@ -470,15 +474,45 @@ a {
     margin: 0 10px; 
     font-size: 20px;
 }
-.para-sub{
+.para-sub {
     font-size: 15px;
-    background-color: #dbffd9;
+    background-color: white;
     color: #000;
     padding: 5px;
     border-radius: 10px;
-    text-align: center;
     margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden; 
+    box-sizing: border-box;
+    width: 100%; 
+    position: relative; /* Position container relative for children */
+    height: 27px; 
 }
+
+.para-sub .scrolling-text {
+    display: inline-block;
+    position: absolute;
+    white-space: nowrap;
+    animation: scroll-text 18s linear infinite; 
+}
+
+.para-sub .scrolling-text:nth-child(1) {
+    left: 100%; 
+}
+
+.para-sub .scrolling-text:nth-child(2) {
+    left: calc(100% + 20px); 
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(0); 
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+}
+
 .contact-form-container {
     flex: 1;
     max-width: 100%;
@@ -769,19 +803,19 @@ a {
 
 
 /* <!-- Service Section --> */
-#service{
+
+#service {
     overflow: hidden;
 }
+
 .service-sec {
     padding: 20px;
     background-color: white;
 }
 
-
 .service-container {
     max-width: 1120px;
     margin: 0 auto;
-    /* background-color: #c53862; */
     padding: 40px 0;
     position: relative;
 }
@@ -791,25 +825,35 @@ a {
     color: black;
     margin-bottom: 20px;
     font-size: 70px;
-    font-family: cursive; 
+    font-family: cursive;
 }
 
 .slide-content {
-    overflow: hidden;
+    overflow-x: auto; 
+    white-space: nowrap; 
     position: relative;
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: none; 
+}
+
+.slide-content::-webkit-scrollbar {
+    display: none; 
 }
 
 .service-wrapper {
     display: flex;
     transition: transform 0.5s ease-in-out;
     will-change: transform;
+    justify-content: flex-start; 
 }
 
 .service-slide {
     flex: 0 0 auto;
     width: 100%;
+    max-width: 320px; 
     padding: 0 10px;
     box-sizing: border-box;
+    scroll-snap-align: center; 
 }
 
 .box {
@@ -827,26 +871,19 @@ a {
     padding: 10px 16px;
 }
 
-.image-content {
-    position: relative;
-    /* row-gap: 15px; */
-}
-
 .overlay {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    /* border-radius: 10%; */
 }
 
 .box-image {
     position: relative;
     height: 410px;
-    width: 350px;
-    /* border-radius: 50%; */
+    width: 100%;
+    max-width: 350px; 
     overflow: hidden;
     margin: 0 auto;
 }
@@ -862,16 +899,7 @@ a {
     font-weight: 500;
     color: black;
     padding-top: 17px;
-
 }
-
-.description {
-    font-size: 15px;
-    color: black;
-    padding-top: 17px;
-    line-height: 17px;
-}
-
 
 
 .btn4, .btn5 {
@@ -883,10 +911,10 @@ a {
     padding: 0px;
     cursor: pointer;
     position: absolute;
-    top: 60%;
+    top: 50%;
     transform: translateY(-50%);
     font-size: 15px;
-    
+    z-index: 10; 
 }
 
 .btn4 {
@@ -899,20 +927,54 @@ a {
 
 .btn4:hover, .btn5:hover {
     background-color: #008152;
-} 
-
-
+}
 
 
 @media (min-width: 768px) {
+    .service-wrapper {
+        justify-content: space-between; 
+    }
+    
     .service-slide {
-        flex: 0 0 33.3333%;
+        flex: 0 0 33.3333%; 
+    }
+
+    .btn4, .btn5 {
+        display: block; 
     }
 }
 
 @media (max-width: 767px) {
+    .slide-content {
+        overflow-x: scroll; 
+        scroll-snap-type: x mandatory; 
+    }
+    .banner-video{
+        margin-top: 6.9rem;
+    }
+    .service-wrapper {
+        justify-content: flex-start; 
+        display: inline-flex; 
+    }
+    
     .service-slide {
-        flex: 0 0 100%;
+        flex: 0 0 auto; 
+        max-width: 320px;
+        margin: 0 10px; 
+    }
+
+    .btn4, .btn5 {
+        display: block; 
+        width: 40px; 
+        height: 40px;
+    }
+
+    .btn4 {
+        left: 10px; 
+    }
+
+    .btn5 {
+        right: 10px; 
     }
 }
 
@@ -1073,7 +1135,7 @@ a {
 .Headings-Blog1{
     padding-top: 50px;
     text-align: left;
-    margin-left: 20% ;
+    margin-left: 10% ;
 }
 .blog1-heading{
     font-size: 40px;
@@ -1094,9 +1156,10 @@ a {
 
 .img-blog1,
 .para-blog1 {
-    width: 540px; 
+    width: 769px; 
     padding: 0 20px; 
     box-sizing: border-box; 
+    overflow-y: hidden;
 }
 
 .blog1-image {
@@ -1248,8 +1311,8 @@ a {
     color: #dbffd9;
   }
 .youtube-button{
-    background-color: #f47b2f;
-    color: #dbffd9;
+    background-color: #dbffd9;
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
@@ -1363,7 +1426,7 @@ a {
 .whatsapp-btn {
     cursor: pointer;
     position: fixed;
-    bottom: 20px;
+    bottom: 50px;
     right: 20px;
     z-index: 1000;
     display: flex;
@@ -2052,7 +2115,7 @@ a:-webkit-any-link {
         margin: 0;
     }
     .modal-content{
-        height: 442px;
+        height: 70%;
     }
     .container-blog1{
         width: 340px;
@@ -2399,28 +2462,27 @@ a:-webkit-any-link {
 
 
 /* Modal Styles */
-/* Modal Styles */
 .modal {
     display: none; 
     position: fixed; 
-    z-index: 1; 
+    z-index: 9999; /* High z-index to ensure it stays on top */
     left: 0;
     top: 0;
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(0, 0, 0); 
     background-color: rgba(0, 0, 0, 0.4); 
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; 
+    margin: 5% auto; 
     padding: 20px;
     border: 1px solid #888;
     width: 80%; 
-    max-height: 80%; /* Prevent the modal from being too tall */
+    height: 600px; /* Prevent the modal from being too tall */
     overflow-y: auto; /* Enable vertical scroll */
+    z-index: 99999; /* Ensure modal content stays above any other content */
 }
 
 .close {
@@ -2436,8 +2498,3 @@ a:-webkit-any-link {
     text-decoration: none;
     cursor: pointer;
 }
-
-
-
-
-
