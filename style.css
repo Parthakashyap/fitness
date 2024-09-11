@@ -1318,7 +1318,7 @@ a {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
-    /* margin: 20px; */
+    margin: 20px;
 
     position: relative;
     float: right;
@@ -1873,7 +1873,7 @@ a:-webkit-any-link {
     
     .contact-testimonial-section {
         flex-direction: column;
-        background-color: #002f6c;
+        background-color: #003220;
         height: 1320px;
         min-height: 60%;
         padding: 25px;
