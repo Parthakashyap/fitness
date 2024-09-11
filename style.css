@@ -1774,6 +1774,7 @@ a:-webkit-any-link {
         transition: 0.6s ease, opacity 0.6s ease; 
         padding: 10px;
         opacity: 0;
+        padding-bottom: 20px;
     }
 
     .nav-menu.active {
